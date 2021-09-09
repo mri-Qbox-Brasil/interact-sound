@@ -10,10 +10,17 @@
 
 local standardVolumeOutput = 0.3;
 local hasPlayerLoaded = false
-Citizen.CreateThread(function()
-	Wait(15000)
-	hasPlayerLoaded = true
+
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
+AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+    hasPlayerLoaded = true
 end)
+
+RegisterNetEvent('QBCore:Client:OnPlayerUnload')
+AddEventHandler('QBCore:Client:OnPlayerUnload', function()
+    hasPlayerLoaded = false
+end)
+
 ------
 -- RegisterNetEvent LIFE_CL:Sound:PlayOnOne
 --
